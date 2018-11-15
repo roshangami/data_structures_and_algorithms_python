@@ -39,11 +39,11 @@ class LinkedList():
 	def print_reverse(self, start=None):
 		if start is None: start=self.last
 		if start.nextnode != None:
-			start=start.nextnode
-			self.print_reverse(start)
-			print start.nodeval,
-		if start.nodeval is self.last.nodeval:
-			print self.last.nodeval,
+#			start=start.nextnode
+			self.print_reverse(start.nextnode)
+		print start.nodeval,
+#		if start.nodeval is self.last.nodeval:
+#			print self.last.nodeval,
 def main():
 	n1=Node("Mon")
 	n2=Node("Tue")

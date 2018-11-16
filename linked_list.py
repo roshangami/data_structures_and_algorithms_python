@@ -7,6 +7,7 @@ class Node():
 class LinkedList():
 	def __init__(self):
 		self.last=None
+		self.size=0
 
 	def add_node(self, node):
 		if self.last is None:
@@ -14,6 +15,8 @@ class LinkedList():
 		else:
 			node.nextnode=self.last
 			self.last=node
+		self.size=self.size+1
+
 	def print_list(self):
 		start = self.last
 		while True:
@@ -39,11 +42,22 @@ class LinkedList():
 	def print_reverse(self, start=None):
 		if start is None: start=self.last
 		if start.nextnode != None:
-#			start=start.nextnode
 			self.print_reverse(start.nextnode)
 		print start.nodeval,
-#		if start.nodeval is self.last.nodeval:
-#			print self.last.nodeval,
+
+	def reverse_iterative(self):
+		start=self.last
+		for val in range(self.size)[::-1]:
+			num=val
+#			print "val",val
+			while num:
+#				print "num",num
+				if start.nextnode is not None:
+#					print "start.nodeval", start.nodeval
+					start.nodeval,start.nextnode.nodeval = start.nextnode.nodeval,start.nodeval
+					start=start.nextnode
+				num=num-1
+			start=self.last
 def main():
 	n1=Node("Mon")
 	n2=Node("Tue")
@@ -59,7 +73,8 @@ def main():
 	ll.print_list()
 #	ll.delete_node("Wedsd")
 #	ll.print_list()
-	ll.print_reverse()
+	ll.reverse_iterative()
+	ll.print_list()
 
 if __name__ == "__main__":
 	main()

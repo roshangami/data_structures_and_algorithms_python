@@ -45,6 +45,17 @@ class LinkedList():
 			self.print_reverse(start.nextnode)
 		print start.nodeval,
 
+	def reverse_recursion(self, start=None):
+		if start is None:
+			start=self.last
+		if start.nextnode != None:
+			self.reverse_recursion(start.nextnode)
+			start.nextnode.nextnode=start
+			start.nextnode=None
+		else:
+			self.last=start
+			return
+
 	def reverse_iterative(self):
 		start=self.last
 		for val in range(self.size)[::-1]:
@@ -73,7 +84,9 @@ def main():
 	ll.print_list()
 #	ll.delete_node("Wedsd")
 #	ll.print_list()
-	ll.reverse_iterative()
+#	ll.reverse_iterative()
+#	ll.print_list()
+	ll.reverse_recursion()
 	ll.print_list()
 
 if __name__ == "__main__":

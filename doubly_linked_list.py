@@ -1,9 +1,9 @@
 
 class Node():
-	def __init__(self, nodeval, prevnode=None, nextnode=None):
+	def __init__(self, nodeval):
 		self.nodeval=nodeval
-		self.prevnode=prevnode
-		self.nextnode=nextnode
+		self.prevnode=None
+		self.nextnode=None
 
 class DoublyLinkedList():
 	def __init__(self):

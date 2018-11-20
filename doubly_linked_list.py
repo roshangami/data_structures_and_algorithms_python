@@ -50,13 +50,22 @@ class DoublyLinkedList():
 	def search_node(self, nodeval):
 		start=self.last
 		while True:
-			if start.nodeval is nodeval:
-				print nodeval, 'Present'
-				break
-				return True
 			if start is None:
+				print nodeval, 'Not present'
 				break
+			if start.nodeval is nodeval:
+				print start.nodeval, 'Present'
+				return start
 			start=start.nextnode
+
+	def insert_node(self, node, af_node):
+		insert_af=self.search_node(af_node)
+		if type(insert_af) is 'str':
+			print insert_af
+		insert_af.nextnode.prevnode=node
+		node.nextnode=insert_af.nextnode
+		node.prevnode=insert_af
+		insert_af.nextnode=node
 
 def main():
 	n1=Node("Mon")
@@ -70,6 +79,8 @@ def main():
 	print ''
 	dll.print_reverse_list()
 	dll.search_node("Mon")
+	dll.insert_node(Node("0"), "Tue")
+	dll.print_list()
 
 if __name__ == "__main__":
 	main()

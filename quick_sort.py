@@ -1,14 +1,12 @@
 
 def quick(s, e):
 	pointer=s
-	print pointer,"->", li[pointer], e,"->",li[e]
-	for val in li[s:e-1]:
+	for val in li[s:e]:
 		if li[e] > val:
 			ind=li.index(val)
 			print li[pointer], li[ind]
 			li[pointer],li[ind]=li[ind],li[pointer]
 			pointer=pointer+1
-	print "between", pointer, li[pointer]
 	li[pointer], li[e]=li[e], li[pointer]
 	print li
 	if s<pointer:
